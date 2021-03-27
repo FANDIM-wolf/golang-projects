@@ -15,6 +15,13 @@ func main(){
 	//variables
 	var type_of_drink string 
 
+	//dictionary  to keep data 
+	Dictionary :=map[string]string{
+		"login": "",
+		"password":"",
+	}
+
+	//print title
 	fmt.Println("Cafe Versetti\n")
 	fmt.Scanf("%s\n",&type_of_drink)
 	
@@ -26,7 +33,9 @@ func main(){
 			price: 45,
 			additional: []string{"nothing","got"},
 		}
-		fmt.Println(coffe.price)
+		Dictionary["login"]="none"
+		fmt.Println("Drink:",coffe.name)
+		fmt.Println("Price: ",coffe.price)
 		fmt.Printf("Thanks for %s",type_of_drink)
 	}
 	
