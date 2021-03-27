@@ -38,5 +38,16 @@ func main(){
 		fmt.Println("Price: ",coffe.price)
 		fmt.Printf("Thanks for %s",type_of_drink)
 	}
-	
+	if type_of_drink == "coconut coctail" || type_of_drink == "coconut"{
+		coconut_coctail := GOOD{
+			id :1,
+			name : "coconut coctail",
+			price: 55,
+			additional: []string{"nothing","got"},
+		}
+		Dictionary["login"]="none"
+		fmt.Println("Drink:",coconut_coctail.name)
+		fmt.Println("Price: ",coconut_coctail.price)
+		fmt.Printf("Thanks for %s",type_of_drink)
+	}
 }
