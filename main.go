@@ -22,7 +22,7 @@ Dictionary_of_basket:=map[string]int{
 	"price":0,
 }
 func remove_all_from_basket(){
-	Dictionary_of_basket["price"]=0;
+	Dictionary_of_basket["price"]=0
 	fmt.Printf("Basket is clear")
 }
 
