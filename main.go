@@ -8,32 +8,25 @@ type GOOD struct {
 	id int64
 	name string 
 	price int 
-	additional [] string
+	additional [] string	
 }
 
-//dictionary  to keep data 
-Dictionary :=map[string]string{
-	"login": "",
-	"password":"",
 
-}
-//dictionary of basket 
-Dictionary_of_basket:=map[string]int{
-	"price":0,
-}
-func remove_all_from_basket(){
-	Dictionary_of_basket["price"]=0
-	fmt.Printf("Basket is clear")
-}
-
-func main(){
+func work(){
 	//variables
 	var type_of_drink string 
-
-	//print title
-	fmt.Println("Cafe Versetti\n")
+	var continue_to_order string
+	var price_in_busket int
 	fmt.Scanf("%s\n",&type_of_drink)
 	
+	//dictionary  to keep data 
+	Dictionary:=map[string]string{
+		"login": "",
+		"password":"",
+
+	}
+	
+
 	//condition 
 	if type_of_drink == "coffe"{
 		coffe := GOOD{
@@ -43,10 +36,17 @@ func main(){
 			additional: []string{"nothing","got"},
 		}
 		Dictionary["login"]="none"
-		Dictionary_of_basket["price"] += 45 
+		price_in_busket =price_in_busket+coffe.price //bill in busket
 		fmt.Println("Drink:",coffe.name)
 		fmt.Println("Price: ",coffe.price)
 		fmt.Printf("Thanks for %s",type_of_drink)
+
+		fmt.Println("Do you wanna order something else:")
+		fmt.Scanf("%s\n",&continue_to_order)
+		if continue_to_order == "y" || continue_to_order == "yes" {
+			work()
+		}
+
 	}
 	if type_of_drink == "coconut coctail" || type_of_drink == "coconut"{
 		coconut_coctail := GOOD{
@@ -55,15 +55,30 @@ func main(){
 			price: 55,
 			additional: []string{"nothing","got"},
 		}
-		Dictionary_of_basket["price"] += 55 
+		price_in_busket = price_in_busket+coconut_coctail.price  //bill in busket
 		Dictionary["login"]="none"
 		fmt.Println("Drink:",coconut_coctail.name)
 		fmt.Println("Price: ",coconut_coctail.price)
 		fmt.Printf("Thanks for %s",type_of_drink)
+
+		fmt.Println("Do you wanna order something else:")
+		fmt.Scanf("%s\n",&continue_to_order)
+		if continue_to_order == "y" || continue_to_order == "yes" {
+			work()
+		}
 	}
 	if type_of_drink == "clear" || type_of_drink == "none" {
-		remove_all_from_basket()
+		price_in_busket =0
 	}
 	
-	fmt.Printf("bill for service of resturant: %d\n",Dictionary_of_basket["price"])
+	fmt.Printf("bill for service of resturant: %d\n",price_in_busket)
+	}
+
+ 
+func main(){
+	//print title
+	fmt.Println("Cafe Versetti\n")
+
+	work()	
+	
 }
